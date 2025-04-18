@@ -4,6 +4,7 @@ import { ArrowRight, Code, Smartphone, Globe, BarChart3, Share2, TrendingUp, Che
 import { Button } from '@/components/ui/button';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import OrigamiBackground from '@/components/OrigamiBackground';
 
 const Index = () => {
   const services = [
@@ -47,6 +48,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      <OrigamiBackground />
       <Navbar />
       
       {/* Hero Section */}
