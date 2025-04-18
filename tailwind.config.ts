@@ -52,6 +52,13 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+                fivsys: {
+                    black: '#000000',
+                    red: '#ea384c',
+                    silver: '#9F9EA1',
+                    darkGray: '#222222',
+                    lightGray: '#f5f5f5',
+                },
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
