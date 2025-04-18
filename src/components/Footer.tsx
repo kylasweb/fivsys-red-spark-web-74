@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Linkedin, Mail, Phone, MapPin } from 'lucide-react';
 
@@ -108,14 +107,15 @@ const Footer = () => {
               <li className="flex items-start">
                 <MapPin size={18} className="text-fivsys-red mr-2 mt-0.5 flex-shrink-0" />
                 <span className="text-gray-400">
-                  123 Tech Park, Suite 456<br />
-                  San Francisco, CA 94103
+                  Goondhu -2, Behind Sreenidhi Regency<br />
+                  Sri Ganesh PG Road, Kasavanhalli<br />
+                  Sarjapura, Bangalore - 560035
                 </span>
               </li>
               <li className="flex items-center">
                 <Phone size={18} className="text-fivsys-red mr-2 flex-shrink-0" />
-                <a href="tel:+11234567890" className="text-gray-400 hover:text-fivsys-red transition-colors">
-                  +1 (123) 456-7890
+                <a href="tel:+916361866050" className="text-gray-400 hover:text-fivsys-red transition-colors">
+                  +91 6361866050
                 </a>
               </li>
               <li className="flex items-center">

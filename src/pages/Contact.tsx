@@ -105,8 +105,9 @@ const Contact = () => {
                     <div>
                       <h3 className="font-bold mb-1">Visit Us</h3>
                       <p className="text-fivsys-silver">
-                        123 Tech Park, Suite 456<br />
-                        San Francisco, CA 94103
+                        Goondhu -2, Behind Sreenidhi Regency<br />
+                        Sri Ganesh PG Road, Kasavanhalli<br />
+                        Sarjapura, Bangalore - 560035
                       </p>
                     </div>
                   </div>
@@ -118,8 +119,8 @@ const Contact = () => {
                     <div>
                       <h3 className="font-bold mb-1">Call Us</h3>
                       <p className="text-fivsys-silver">
-                        <a href="tel:+11234567890" className="hover:text-fivsys-red transition-colors">
-                          +1 (123) 456-7890
+                        <a href="tel:+916361866050" className="hover:text-fivsys-red transition-colors">
+                          +91 6361866050
                         </a>
                       </p>
                     </div>
