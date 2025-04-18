@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { ArrowRight, Code, Smartphone, Globe, BarChart3, Share2, TrendingUp, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,8 +5,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import OrigamiBackground from '@/components/OrigamiBackground';
 
-const Index = () => {
-  const services = [
+const services = [
     {
       title: "Web Development",
       description: "Custom AI-powered websites designed to convert visitors into customers, with stunning visuals and seamless functionality.",
@@ -46,6 +44,7 @@ const Index = () => {
     }
   ];
 
+const Index = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       <OrigamiBackground />
@@ -53,7 +52,7 @@ const Index = () => {
       
       {/* Hero Section */}
       <section className="relative pt-32 pb-20 md:pt-40 md:pb-24">
-        <div className="absolute inset-0 bg-gradient-to-b from-fivsys-red/10 to-transparent opacity-30" />
+        <div className="absolute inset-0 bg-gradient-to-br from-fivsys-red/20 via-fivsys-darkGray/30 to-black opacity-80" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center max-w-3xl mx-auto">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
@@ -75,7 +74,7 @@ const Index = () => {
       </section>
       
       {/* Services Section */}
-      <section className="py-20 bg-gradient-to-b from-black to-fivsys-darkGray">
+      <section className="py-20 bg-gradient-to-b from-black via-fivsys-darkGray/50 to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
@@ -106,7 +105,7 @@ const Index = () => {
       </section>
       
       {/* About Section */}
-      <section className="py-20 bg-black">
+      <section className="py-20 bg-gradient-to-br from-black via-fivsys-darkGray/30 to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
@@ -122,9 +121,9 @@ const Index = () => {
               </Button>
             </div>
             <div className="rounded-lg overflow-hidden border border-fivsys-silver/10">
-              <div className="relative aspect-video bg-gradient-to-tr from-fivsys-darkGray to-fivsys-red/30 flex items-center justify-center">
+              <div className="relative aspect-video bg-gradient-to-tr from-fivsys-red/20 via-fivsys-darkGray/40 to-black flex items-center justify-center backdrop-blur-sm">
                 <div className="text-center p-6">
-                  <div className="text-2xl font-bold mb-2">Your Vision, Our Expertise</div>
+                  <div className="text-2xl font-bold mb-2 text-gradient">Your Vision, Our Expertise</div>
                   <p className="text-fivsys-silver">AI-powered solutions for the digital age</p>
                 </div>
               </div>
@@ -134,9 +133,9 @@ const Index = () => {
       </section>
       
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-fivsys-darkGray to-black">
+      <section className="py-20 bg-gradient-to-br from-black via-fivsys-darkGray/20 to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-fivsys-red/10 to-fivsys-darkGray border border-fivsys-silver/10 rounded-lg p-10 text-center">
+          <div className="bg-gradient-to-r from-fivsys-red/10 via-fivsys-darkGray/30 to-black border border-fivsys-silver/10 rounded-lg p-10 text-center backdrop-blur-sm">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>
             <p className="text-fivsys-silver max-w-2xl mx-auto mb-8">
               Let's collaborate to create innovative solutions that drive growth and success for your business.
