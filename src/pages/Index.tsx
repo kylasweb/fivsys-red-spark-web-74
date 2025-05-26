@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import { ArrowRight, Code, Smartphone, Globe, BarChart3, Share2, TrendingUp, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -55,14 +56,14 @@ const Index = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-fivsys-red/20 via-fivsys-darkGray/30 to-black opacity-80" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center max-w-3xl mx-auto">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 animate-slideInFromBottom">
               AI-Powered Digital Solutions for the Future
             </h1>
-            <p className="text-xl text-fivsys-silver mb-8">
+            <p className="text-xl text-fivsys-silver mb-8 animate-slideInFromBottom delay-200">
               Transform your business with cutting-edge development and strategic marketing services.
             </p>
-            <div className="flex flex-col sm:flex-row justify-center gap-4">
-              <Button asChild size="lg" className="bg-fivsys-red hover:bg-fivsys-red/90">
+            <div className="flex flex-col sm:flex-row justify-center gap-4 animate-slideInFromBottom delay-300">
+              <Button asChild size="lg" className="bg-fivsys-red hover:bg-fivsys-red/90 animate-gentle-glow">
                 <Link to="/contact">Get Started</Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-fivsys-silver hover:bg-fivsys-silver/10">
@@ -77,8 +78,8 @@ const Index = () => {
       <section className="py-20 bg-gradient-to-b from-black via-fivsys-darkGray/50 to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Services</h2>
-            <p className="text-fivsys-silver max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 animate-slideInFromBottom">Our Services</h2>
+            <p className="text-fivsys-silver max-w-2xl mx-auto animate-slideInFromBottom delay-100">
               Comprehensive solutions to help your business thrive in the digital landscape.
             </p>
           </div>
@@ -87,16 +88,17 @@ const Index = () => {
             {services.map((service, index) => (
               <div 
                 key={index} 
-                className="bg-fivsys-darkGray p-8 rounded-lg border border-fivsys-silver/10 hover:border-fivsys-red/30 transition-all duration-300 group"
+                className="bg-fivsys-darkGray p-8 rounded-lg border border-fivsys-silver/10 hover:border-fivsys-red/30 transition-all duration-300 group hover:transform hover:scale-105 hover-scale animate-slideInFromBottom"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="mb-4">{service.icon}</div>
+                <div className="mb-4 group-hover:animate-gentle-glow">{service.icon}</div>
                 <h3 className="text-xl font-bold mb-3">{service.title}</h3>
                 <p className="text-fivsys-silver mb-5">{service.description}</p>
                 <Link 
                   to={service.link} 
                   className="inline-flex items-center text-fivsys-red group-hover:text-white transition-colors"
                 >
-                  Learn more <ChevronRight className="h-4 w-4 ml-1" />
+                  Learn more <ChevronRight className="h-4 w-4 ml-1 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             ))}
@@ -108,7 +110,7 @@ const Index = () => {
       <section className="py-20 bg-gradient-to-br from-black via-fivsys-darkGray/30 to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
+            <div className="animate-slideInFromLeft">
               <h2 className="text-3xl md:text-4xl font-bold mb-6">Transforming Ideas into Digital Reality</h2>
               <p className="text-fivsys-silver mb-6">
                 At fivsys, we leverage the power of AI to create exceptional digital experiences that drive growth for businesses of all sizes.
@@ -116,11 +118,11 @@ const Index = () => {
               <p className="text-fivsys-silver mb-8">
                 Our team of experts combines technical expertise with creative thinking to deliver solutions that exceed expectations and achieve measurable results.
               </p>
-              <Button asChild className="bg-fivsys-red hover:bg-fivsys-red/90">
+              <Button asChild className="bg-fivsys-red hover:bg-fivsys-red/90 animate-gentle-glow">
                 <Link to="/about">About Us <ArrowRight className="ml-2 h-4 w-4" /></Link>
               </Button>
             </div>
-            <div className="rounded-lg overflow-hidden border border-fivsys-silver/10">
+            <div className="rounded-lg overflow-hidden border border-fivsys-silver/10 animate-slideInFromRight">
               <div className="relative aspect-video bg-gradient-to-tr from-fivsys-red/20 via-fivsys-darkGray/40 to-black flex items-center justify-center backdrop-blur-sm">
                 <div className="text-center p-6">
                   <div className="text-2xl font-bold mb-2 text-gradient">Your Vision, Our Expertise</div>
@@ -135,12 +137,12 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-black via-fivsys-darkGray/20 to-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-gradient-to-r from-fivsys-red/10 via-fivsys-darkGray/30 to-black border border-fivsys-silver/10 rounded-lg p-10 text-center backdrop-blur-sm">
+          <div className="bg-gradient-to-r from-fivsys-red/10 via-fivsys-darkGray/30 to-black border border-fivsys-silver/10 rounded-lg p-10 text-center backdrop-blur-sm animate-slideInFromBottom">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Business?</h2>
             <p className="text-fivsys-silver max-w-2xl mx-auto mb-8">
               Let's collaborate to create innovative solutions that drive growth and success for your business.
             </p>
-            <Button asChild size="lg" className="bg-fivsys-red hover:bg-fivsys-red/90">
+            <Button asChild size="lg" className="bg-fivsys-red hover:bg-fivsys-red/90 animate-gentle-glow">
               <Link to="/contact">Contact Us Today</Link>
             </Button>
           </div>
