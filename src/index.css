@@ -1,88 +1,89 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    /* Fivsys Theme - Dark by default */
+    /* Updated Fivsys Theme with new color palette */
     --background: 0 0% 0%; /* Black background */
-    --foreground: 0 0% 95%; /* Light text for contrast */
+    --foreground: 0 0% 100%; /* Pure white text for contrast */
 
-    --card: 0 0% 5%; /* Slightly lighter black for cards */
-    --card-foreground: 0 0% 95%;
+    --card: 0 0% 10%; /* Slightly lighter black for cards */
+    --card-foreground: 0 0% 100%;
 
-    --popover: 0 0% 5%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 100%;
 
-    --primary: 353 81% 57%; /* Red primary */
-    --primary-foreground: 0 0% 95%;
+    --primary: 356 73% 52%; /* Updated red primary (#df2531) */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 1% 63%; /* Silver grey */
-    --secondary-foreground: 0 0% 5%;
+    --secondary: 0 0% 100%; /* White secondary */
+    --secondary-foreground: 0 0% 0%;
 
     --muted: 0 0% 15%;
     --muted-foreground: 0 0% 70%;
 
-    --accent: 353 81% 57%;
-    --accent-foreground: 0 0% 95%;
+    --accent: 356 73% 52%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 95%;
+    --destructive-foreground: 0 0% 100%;
 
     --border: 0 0% 20%;
     --input: 0 0% 20%;
-    --ring: 353 81% 57%;
+    --ring: 356 73% 52%;
 
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 5%;
     --sidebar-foreground: 0 0% 90%;
-    --sidebar-primary: 353 81% 57%;
-    --sidebar-primary-foreground: 0 0% 95%;
-    --sidebar-accent: 240 1% 63%;
-    --sidebar-accent-foreground: 0 0% 5%;
+    --sidebar-primary: 356 73% 52%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 100%;
+    --sidebar-accent-foreground: 0 0% 0%;
     --sidebar-border: 0 0% 20%;
-    --sidebar-ring: 353 81% 57%;
+    --sidebar-ring: 356 73% 52%;
   }
 
   /* Light theme version - not used by default */
   .light {
-    --background: 0 0% 95%;
-    --foreground: 0 0% 5%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 0%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 5%;
+    --card-foreground: 0 0% 0%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 5%;
+    --popover-foreground: 0 0% 0%;
 
-    --primary: 353 81% 57%;
-    --primary-foreground: 0 0% 95%;
+    --primary: 356 73% 52%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 1% 63%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 0 0% 95%;
+    --secondary-foreground: 0 0% 0%;
 
     --muted: 0 0% 90%;
     --muted-foreground: 0 0% 40%;
 
-    --accent: 353 81% 57%;
-    --accent-foreground: 0 0% 95%;
+    --accent: 356 73% 52%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 95%;
+    --destructive-foreground: 0 0% 100%;
 
     --border: 0 0% 80%;
     --input: 0 0% 80%;
-    --ring: 353 81% 57%;
+    --ring: 356 73% 52%;
     
     --sidebar-background: 0 0% 95%;
     --sidebar-foreground: 0 0% 5%;
-    --sidebar-primary: 353 81% 57%;
-    --sidebar-primary-foreground: 0 0% 95%;
-    --sidebar-accent: 240 1% 63%;
-    --sidebar-accent-foreground: 0 0% 5%;
+    --sidebar-primary: 356 73% 52%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 95%;
+    --sidebar-accent-foreground: 0 0% 0%;
     --sidebar-border: 0 0% 80%;
-    --sidebar-ring: 353 81% 57%;
+    --sidebar-ring: 356 73% 52%;
   }
 }
 
@@ -96,7 +97,7 @@
     scroll-behavior: smooth;
   }
 
-  /* Additional fivsys custom styles */
+  /* Additional fivsys custom styles with updated colors */
   .gradient-text {
     @apply bg-gradient-to-r from-white to-fivsys-silver bg-clip-text text-transparent;
   }
@@ -106,10 +107,23 @@
   }
 
   .red-glow {
-    @apply shadow-[0_0_15px_rgba(234,56,76,0.5)];
+    @apply shadow-[0_0_15px_rgba(223,37,49,0.5)];
+  }
+
+  .burgundy-glow {
+    @apply shadow-[0_0_15px_rgba(122,20,25,0.5)];
   }
 
   .hover-scale {
     @apply transition-transform duration-300 hover:scale-105;
+  }
+
+  /* New gradient utilities based on the color palette */
+  .gradient-red-to-burgundy {
+    @apply bg-gradient-to-br from-fivsys-red via-fivsys-darkRed to-fivsys-burgundy;
+  }
+
+  .gradient-burgundy-to-black {
+    @apply bg-gradient-to-br from-fivsys-burgundy via-fivsys-darkGray to-fivsys-black;
   }
 }

@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -54,9 +55,11 @@ export default {
 				},
                 fivsys: {
                     black: '#000000',
-                    red: '#ea384c',
-                    silver: '#9F9EA1',
-                    darkGray: '#222222',
+                    red: '#df2531',
+                    darkRed: '#a91d26',
+                    burgundy: '#7a1419',
+                    silver: '#ffffff',
+                    darkGray: '#1a1a1a',
                     lightGray: '#f5f5f5',
                 },
 				sidebar: {

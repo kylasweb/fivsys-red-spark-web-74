@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
 import { cva, type VariantProps } from "class-variance-authority"
@@ -9,15 +10,16 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-fivsys-red text-white hover:bg-fivsys-red/90",
+        default: "bg-fivsys-red text-white hover:bg-fivsys-darkRed transition-all duration-300",
         destructive:
           "bg-destructive text-destructive-foreground hover:bg-destructive/90",
         outline:
-          "border border-fivsys-silver bg-transparent text-white hover:bg-fivsys-silver/10 hover:border-fivsys-red/50",
+          "border border-fivsys-silver bg-transparent text-white hover:bg-fivsys-red/10 hover:border-fivsys-red transition-all duration-300",
         secondary:
-          "bg-fivsys-darkGray text-white hover:bg-fivsys-darkGray/80",
-        ghost: "hover:bg-fivsys-silver/10 hover:text-white",
-        link: "text-fivsys-red underline-offset-4 hover:underline",
+          "bg-fivsys-darkGray text-white hover:bg-fivsys-burgundy transition-all duration-300",
+        ghost: "hover:bg-fivsys-red/10 hover:text-fivsys-red transition-all duration-300",
+        link: "text-fivsys-red underline-offset-4 hover:underline hover:text-fivsys-darkRed transition-colors",
+        burgundy: "bg-fivsys-burgundy text-white hover:bg-fivsys-darkRed transition-all duration-300",
       },
       size: {
         default: "h-10 px-4 py-2",
