@@ -4,6 +4,7 @@ import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Check, Users, Lightbulb, Target, Award, ArrowRight } from 'lucide-react';
+import OrigamiBackground from '@/components/OrigamiBackground';
 
 const About = () => {
   const values = [
@@ -62,11 +63,35 @@ const About = () => {
                 Today, we have expanded our services to include a full spectrum of digital solutions, from web and app development to digital marketing and sales strategy, all powered by the latest AI technologies.
               </p>
             </div>
-            <div className="rounded-lg overflow-hidden border border-fivsys-silver/10">
-              <div className="relative aspect-square bg-gradient-to-tr from-fivsys-darkGray to-fivsys-red/30 flex items-center justify-center">
-                <div className="text-center p-6">
-                  <div className="text-2xl font-bold mb-2">Technology Meets Creativity</div>
-                  <p className="text-fivsys-silver">Crafting digital experiences since 2020</p>
+            <div className="relative">
+              {/* Origami Shape Design */}
+              <div className="relative aspect-square rounded-2xl border border-fivsys-red/30 bg-gradient-to-br from-fivsys-darkGray/50 to-black overflow-hidden">
+                <OrigamiBackground />
+                <div className="relative z-10 h-full flex items-center justify-center p-8">
+                  <div className="text-center">
+                    {/* Main Origami Shape */}
+                    <div className="relative mb-6">
+                      <div className="w-32 h-32 mx-auto relative">
+                        {/* Origami Diamond Shape */}
+                        <div className="absolute inset-0 transform rotate-45 bg-gradient-to-br from-fivsys-red to-fivsys-darkRed rounded-lg shadow-2xl"></div>
+                        <div className="absolute inset-2 transform rotate-45 bg-gradient-to-tl from-fivsys-darkGray to-black rounded-lg"></div>
+                        <div className="absolute inset-4 transform rotate-45 bg-gradient-to-br from-fivsys-red/50 to-transparent rounded-lg"></div>
+                        
+                        {/* Inner geometric pattern */}
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                          <div className="w-8 h-8 bg-fivsys-red rounded-full animate-pulse"></div>
+                        </div>
+                      </div>
+                      
+                      {/* Floating elements */}
+                      <div className="absolute -top-4 -right-4 w-6 h-6 bg-fivsys-red rounded-full opacity-60 animate-float"></div>
+                      <div className="absolute -bottom-4 -left-4 w-4 h-4 bg-fivsys-red rounded-full opacity-40 animate-float" style={{ animationDelay: '1s' }}></div>
+                      <div className="absolute top-0 -left-6 w-3 h-3 bg-fivsys-red rounded-full opacity-30 animate-float" style={{ animationDelay: '2s' }}></div>
+                    </div>
+                    
+                    <h3 className="text-2xl font-bold text-white mb-2">Precision & Innovation</h3>
+                    <p className="text-fivsys-silver">Folding complexity into elegant solutions</p>
+                  </div>
                 </div>
               </div>
             </div>
