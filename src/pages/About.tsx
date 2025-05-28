@@ -1,3 +1,4 @@
+
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Link } from 'react-router-dom';
@@ -63,60 +64,33 @@ const About = () => {
               </p>
             </div>
             <div className="relative">
-              {/* Origami Phoenix Design */}
+              {/* Origami Shape Design */}
               <div className="relative aspect-square rounded-2xl border border-fivsys-red/30 bg-gradient-to-br from-fivsys-darkGray/50 to-black overflow-hidden">
                 <OrigamiBackground />
                 <div className="relative z-10 h-full flex items-center justify-center p-8">
                   <div className="text-center">
-                    {/* Origami Phoenix Shape */}
+                    {/* Main Origami Shape */}
                     <div className="relative mb-6">
-                      <div className="w-40 h-40 mx-auto relative">
-                        {/* Phoenix Body */}
+                      <div className="w-32 h-32 mx-auto relative">
+                        {/* Origami Diamond Shape */}
+                        <div className="absolute inset-0 transform rotate-45 bg-gradient-to-br from-fivsys-red to-fivsys-darkRed rounded-lg shadow-2xl"></div>
+                        <div className="absolute inset-2 transform rotate-45 bg-gradient-to-tl from-fivsys-darkGray to-black rounded-lg"></div>
+                        <div className="absolute inset-4 transform rotate-45 bg-gradient-to-br from-fivsys-red/50 to-transparent rounded-lg"></div>
+                        
+                        {/* Inner geometric pattern */}
                         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                          <div className="w-16 h-20 bg-gradient-to-br from-fivsys-red to-fivsys-darkRed rounded-full transform rotate-12 shadow-2xl"></div>
-                          <div className="absolute inset-2 bg-gradient-to-tl from-fivsys-darkGray to-black rounded-full"></div>
-                        </div>
-                        
-                        {/* Phoenix Head */}
-                        <div className="absolute top-4 left-1/2 transform -translate-x-1/2">
-                          <div className="w-8 h-10 bg-gradient-to-br from-fivsys-red to-fivsys-darkRed rounded-full transform -rotate-12"></div>
-                          <div className="absolute top-1 left-1 w-6 h-8 bg-gradient-to-tl from-fivsys-darkGray to-black rounded-full"></div>
-                          {/* Beak */}
-                          <div className="absolute -top-1 left-3 w-0 h-0 border-l-2 border-r-2 border-b-4 border-l-transparent border-r-transparent border-b-fivsys-red"></div>
-                        </div>
-                        
-                        {/* Phoenix Wings */}
-                        <div className="absolute top-8 -left-6 transform -rotate-45">
-                          <div className="w-12 h-16 bg-gradient-to-br from-fivsys-red/80 to-fivsys-darkRed/60 rounded-full"></div>
-                          <div className="absolute inset-1 bg-gradient-to-tl from-fivsys-darkGray/50 to-transparent rounded-full"></div>
-                        </div>
-                        <div className="absolute top-8 -right-6 transform rotate-45">
-                          <div className="w-12 h-16 bg-gradient-to-bl from-fivsys-red/80 to-fivsys-darkRed/60 rounded-full"></div>
-                          <div className="absolute inset-1 bg-gradient-to-tr from-fivsys-darkGray/50 to-transparent rounded-full"></div>
-                        </div>
-                        
-                        {/* Phoenix Tail Feathers */}
-                        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-6">
-                          <div className="w-3 h-12 bg-gradient-to-b from-fivsys-red to-fivsys-darkRed rounded-full transform rotate-12"></div>
-                          <div className="absolute -left-2 top-2 w-2 h-10 bg-gradient-to-b from-fivsys-red/70 to-fivsys-darkRed/70 rounded-full transform -rotate-12"></div>
-                          <div className="absolute -right-2 top-2 w-2 h-10 bg-gradient-to-b from-fivsys-red/70 to-fivsys-darkRed/70 rounded-full transform rotate-30"></div>
-                        </div>
-                        
-                        {/* Glowing core */}
-                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                          <div className="w-4 h-4 bg-fivsys-red rounded-full animate-pulse shadow-lg shadow-fivsys-red/50"></div>
+                          <div className="w-8 h-8 bg-fivsys-red rounded-full animate-pulse"></div>
                         </div>
                       </div>
                       
-                      {/* Floating flame elements */}
-                      <div className="absolute -top-6 -right-2 w-4 h-4 bg-fivsys-red rounded-full opacity-60 animate-float"></div>
-                      <div className="absolute -bottom-2 -left-6 w-3 h-3 bg-fivsys-red rounded-full opacity-40 animate-float" style={{ animationDelay: '1s' }}></div>
-                      <div className="absolute top-2 -left-8 w-2 h-2 bg-fivsys-red rounded-full opacity-30 animate-float" style={{ animationDelay: '2s' }}></div>
-                      <div className="absolute -top-2 right-4 w-2 h-2 bg-fivsys-red rounded-full opacity-50 animate-float" style={{ animationDelay: '1.5s' }}></div>
+                      {/* Floating elements */}
+                      <div className="absolute -top-4 -right-4 w-6 h-6 bg-fivsys-red rounded-full opacity-60 animate-float"></div>
+                      <div className="absolute -bottom-4 -left-4 w-4 h-4 bg-fivsys-red rounded-full opacity-40 animate-float" style={{ animationDelay: '1s' }}></div>
+                      <div className="absolute top-0 -left-6 w-3 h-3 bg-fivsys-red rounded-full opacity-30 animate-float" style={{ animationDelay: '2s' }}></div>
                     </div>
                     
-                    <h3 className="text-2xl font-bold text-white mb-2">Rising from Innovation</h3>
-                    <p className="text-fivsys-silver">Transforming ideas into digital excellence</p>
+                    <h3 className="text-2xl font-bold text-white mb-2">Precision & Innovation</h3>
+                    <p className="text-fivsys-silver">Folding complexity into elegant solutions</p>
                   </div>
                 </div>
               </div>
