@@ -1,8 +1,34 @@
 
 import ServiceLayout from '@/components/ServiceLayout';
 import { Share2 } from 'lucide-react';
+import { useSEO } from '@/hooks/useSEO';
+import analytics from '@/services/analytics';
+import { useEffect } from 'react';
 
 const SocialMediaMarketing = () => {
+  // SEO Configuration
+  useSEO({
+    title: 'Smart Social Media Marketing Services | AI-Enhanced Campaigns | Fivsys',
+    description: 'Professional social media marketing with AI integration. Strategic campaigns, content creation, and community management that build brand awareness and engagement.',
+    keywords: ['social media marketing', 'AI social media', 'content creation', 'social media management', 'influencer marketing', 'social media advertising'],
+    ogTitle: 'Smart Social Media Marketing Services | Fivsys',
+    ogDescription: 'Build your brand presence with intelligent social media strategies. AI-enhanced campaigns that drive engagement.',
+    canonical: '/services/social-media-marketing'
+  });
+
+  // Analytics tracking
+  useEffect(() => {
+    analytics.trackPageView({
+      page_path: '/services/social-media-marketing',
+      page_title: 'Social Media Marketing Service'
+    });
+    analytics.trackEvent({
+      action: 'page_view',
+      category: 'service',
+      label: 'Social Media Marketing'
+    });
+  }, []);
+
   return (
     <ServiceLayout
       title="Social Media Marketing"

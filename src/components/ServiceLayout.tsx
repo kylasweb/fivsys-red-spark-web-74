@@ -61,9 +61,7 @@ const ServiceLayout: React.FC<ServiceLayoutProps> = ({
             <p className="text-fivsys-silver max-w-2xl mx-auto">
               Our comprehensive {title.toLowerCase()} services include everything you need for success.
             </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-12">
+          </div>          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-8 gap-x-12">
             {features.map((feature, index) => (
               <div key={index} className="flex items-start">
                 <Check className="text-fivsys-red h-6 w-6 mr-3 mt-0.5 flex-shrink-0" />

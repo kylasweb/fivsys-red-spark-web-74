@@ -1,8 +1,34 @@
 
 import ServiceLayout from '@/components/ServiceLayout';
 import { BarChart3 } from 'lucide-react';
+import { useSEO } from '@/hooks/useSEO';
+import analytics from '@/services/analytics';
+import { useEffect } from 'react';
 
 const DigitalMarketing = () => {
+  // SEO Configuration
+  useSEO({
+    title: 'AI-Driven Digital Marketing Services | Data-Driven Results | Fivsys',
+    description: 'Professional digital marketing services with AI integration. SEO, PPC, content marketing, and conversion optimization strategies that drive measurable results.',
+    keywords: ['digital marketing', 'AI marketing', 'SEO services', 'PPC advertising', 'content marketing', 'marketing automation', 'conversion optimization'],
+    ogTitle: 'AI-Driven Digital Marketing Services | Fivsys',
+    ogDescription: 'Transform your digital presence with data-driven marketing strategies. AI-powered campaigns that deliver ROI.',
+    canonical: '/services/digital-marketing'
+  });
+
+  // Analytics tracking
+  useEffect(() => {
+    analytics.trackPageView({
+      page_path: '/services/digital-marketing',
+      page_title: 'Digital Marketing Service'
+    });
+    analytics.trackEvent({
+      action: 'page_view',
+      category: 'service',
+      label: 'Digital Marketing'
+    });
+  }, []);
+
   return (
     <ServiceLayout
       title="Digital Marketing"

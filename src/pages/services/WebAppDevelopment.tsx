@@ -1,8 +1,34 @@
 
 import ServiceLayout from '@/components/ServiceLayout';
 import { Code } from 'lucide-react';
+import { useSEO } from '@/hooks/useSEO';
+import analytics from '@/services/analytics';
+import { useEffect } from 'react';
 
 const WebAppDevelopment = () => {
+  // SEO Configuration
+  useSEO({
+    title: 'Web Application Development Services | Scalable Web Apps | Fivsys',
+    description: 'Professional web application development services. Custom web apps, progressive web applications, and cloud-based solutions with AI integration.',
+    keywords: ['web application development', 'progressive web apps', 'cloud applications', 'custom web apps', 'scalable web solutions', 'full-stack development'],
+    ogTitle: 'Web Application Development Services | Fivsys',
+    ogDescription: 'Build powerful, scalable web applications with our expert development team. Custom solutions for modern business needs.',
+    canonical: '/services/web-app-development'
+  });
+
+  // Analytics tracking
+  useEffect(() => {
+    analytics.trackPageView({
+      page_path: '/services/web-app-development',
+      page_title: 'Web App Development Service'
+    });
+    analytics.trackEvent({
+      action: 'page_view',
+      category: 'service',
+      label: 'Web App Development'
+    });
+  }, []);
+
   return (
     <ServiceLayout
       title="Web App Development"

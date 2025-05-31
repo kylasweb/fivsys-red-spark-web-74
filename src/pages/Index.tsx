@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { ArrowRight, Code, Smartphone, Globe, BarChart3, Share2, TrendingUp, ChevronRight, Zap, Brain, Cpu, Sparkles, Star, Users, Award, Clock } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -6,6 +5,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import GeometricBackground from '@/components/GeometricBackground';
+import OptimizedImage from '@/components/OptimizedImage';
+import ErrorBoundary from '@/components/ErrorBoundary';
+import { useSEO } from '@/hooks/useSEO';
+import analytics from '@/services/analytics';
+import { useEffect } from 'react';
 
 const services = [
   {
@@ -60,6 +64,60 @@ const stats = [
 ];
 
 const Index = () => {
+  // SEO Configuration
+  useSEO({
+    title: 'Fivsys - AI-Powered Digital Solutions & Enterprise Web Development',
+    description: 'Transform your business with Fivsys\' cutting-edge AI solutions, custom web development, and digital innovation. Expert team delivering enterprise-grade technology solutions.',
+    keywords: ['AI solutions', 'web development', 'digital transformation', 'machine learning', 'enterprise software', 'custom development', 'technology consulting', 'Fivsys'],
+    ogTitle: 'Fivsys - AI-Powered Digital Solutions',
+    ogDescription: 'Leading AI solutions and web development company. Transform your business with intelligent technology.',
+    canonical: '/'
+  });
+  // Analytics tracking
+  useEffect(() => {
+    analytics.trackPageView({
+      page_path: '/',
+      page_title: 'Homepage'
+    });
+    
+    // Track scroll depth for homepage engagement
+    const handleScroll = () => {
+      const scrollDepth = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+      if (scrollDepth > 0 && scrollDepth % 25 === 0) {
+        analytics.trackEvent({
+          action: 'scroll_depth',
+          category: 'engagement',
+          label: `${scrollDepth}%`,
+          value: scrollDepth
+        });
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleServiceClick = (serviceName: string, serviceLink: string) => {
+    analytics.trackEvent({
+      action: 'service_card_click',
+      category: 'navigation',
+      label: serviceName
+    });
+    analytics.trackEvent({
+      action: 'service_interest',
+      category: 'engagement',
+      label: serviceName
+    });
+  };
+
+  const handleCTAClick = (ctaType: string) => {
+    analytics.trackEvent({
+      action: 'cta_click',
+      category: 'conversion',
+      label: ctaType
+    });
+  };
+
   return (
     <div className="min-h-screen bg-black text-white">
       <GeometricBackground />
@@ -96,16 +154,23 @@ const Index = () => {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-              <Button asChild size="lg" className="bg-fivsys-red hover:bg-fivsys-darkRed text-white px-8 py-4 h-auto text-lg font-semibold">
-                <Link to="/contact" className="flex items-center gap-3">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">              <Button asChild size="lg" className="bg-fivsys-red hover:bg-fivsys-darkRed text-white px-8 py-4 h-auto text-lg font-semibold">
+                <Link 
+                  to="/contact" 
+                  className="flex items-center gap-3"
+                  onClick={() => handleCTAClick('Hero - Start AI Journey')}
+                >
                   <Brain className="w-5 h-5" />
                   <span>Start Your AI Journey</span>
                   <ArrowRight className="w-5 h-5" />
                 </Link>
               </Button>
               <Button asChild variant="outline" size="lg" className="border-2 border-white/20 hover:border-fivsys-red hover:bg-fivsys-red/10 px-8 py-4 h-auto text-lg font-semibold">
-                <Link to="/services/web-development" className="flex items-center gap-2">
+                <Link 
+                  to="/services/web-development" 
+                  className="flex items-center gap-2"
+                  onClick={() => handleCTAClick('Hero - Explore Services')}
+                >
                   <Sparkles className="w-5 h-5" />
                   <span>Explore Services</span>
                 </Link>
@@ -146,11 +211,8 @@ const Index = () => {
             <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Comprehensive AI-driven services designed to accelerate growth and optimize performance across all business verticals.
             </p>
-          </div>
-
-          {/* Services Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => (
+          </div>          {/* Services Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">            {services.map((service, index) => (
               <Card key={index} className="bg-gradient-to-br from-fivsys-darkGray/50 to-black border-white/10 hover:border-fivsys-red/50 transition-all duration-300 group">
                 <CardHeader className="pb-4">
                   <div className="flex items-center justify-between mb-4">
@@ -178,6 +240,7 @@ const Index = () => {
                   <Link 
                     to={service.link}
                     className="inline-flex items-center gap-2 text-fivsys-red hover:text-white font-semibold transition-colors group"
+                    onClick={() => handleServiceClick(service.title, service.link)}
                   >
                     <span>Learn More</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -225,10 +288,12 @@ const Index = () => {
                   <Sparkles className="w-6 h-6 text-fivsys-red mx-auto mb-2" />
                   <div className="text-sm font-semibold text-white">Future-Ready</div>
                 </div>
-              </div>
-
-              <Button asChild className="bg-fivsys-red hover:bg-fivsys-darkRed text-white px-8 py-4 h-auto text-lg font-semibold">
-                <Link to="/about" className="flex items-center gap-3">
+              </div>              <Button asChild className="bg-fivsys-red hover:bg-fivsys-darkRed text-white px-8 py-4 h-auto text-lg font-semibold">
+                <Link 
+                  to="/about" 
+                  className="flex items-center gap-3"
+                  onClick={() => handleCTAClick('About - Discover Story')}
+                >
                   <span>Discover Our Story</span>
                   <ArrowRight className="w-5 h-5" />
                 </Link>
@@ -273,17 +338,24 @@ const Index = () => {
               <p className="text-xl text-gray-300 mb-10 max-w-3xl mx-auto leading-relaxed">
                 Partner with us to create revolutionary AI-powered solutions that drive exponential growth and position your business at the forefront of digital innovation.
               </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="bg-fivsys-red hover:bg-fivsys-darkRed text-white px-10 py-4 h-auto text-lg font-semibold">
-                  <Link to="/contact" className="flex items-center gap-3">
+                  <Link 
+                    to="/contact" 
+                    className="flex items-center gap-3"
+                    onClick={() => handleCTAClick('CTA - Start Project')}
+                  >
                     <Brain className="w-5 h-5" />
                     <span>Start Your Project</span>
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                 </Button>
                 <Button asChild variant="outline" size="lg" className="border-2 border-white/20 hover:border-fivsys-red hover:bg-fivsys-red/10 px-10 py-4 h-auto text-lg font-semibold">
-                  <Link to="/services/web-development" className="flex items-center gap-2">
+                  <Link 
+                    to="/services/web-development" 
+                    className="flex items-center gap-2"
+                    onClick={() => handleCTAClick('CTA - View Services')}
+                  >
                     <Cpu className="w-5 h-5" />
                     <span>View Services</span>
                   </Link>

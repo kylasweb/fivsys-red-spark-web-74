@@ -9,6 +9,7 @@ import { Card } from '@/components/ui/card';
 import { MapPin, Phone, Mail, Send, Check, Zap, Cpu, Brain, Sparkles, Shield, Rocket, Target, Globe, Code2, Bot } from 'lucide-react';
 import { useToast } from '@/components/ui/use-toast';
 import GeometricBackground from '@/components/GeometricBackground';
+import analytics from '@/services/analytics';
 
 const Contact = () => {
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
@@ -21,6 +22,15 @@ const Contact = () => {
   });
   const { toast } = useToast();
 
+  // Track contact interactions
+  const handlePhoneClick = () => {
+    analytics.trackContactInteraction('phone', 'enterprise-hotline');
+  };
+
+  const handleEmailClick = () => {
+    analytics.trackContactInteraction('email', 'strategic-partnerships');
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({
@@ -28,27 +38,40 @@ const Contact = () => {
       [name]: value,
     });
   };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormStatus('submitting');
     
+    // Validate environment variables
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+    
+    if (!serviceId || !templateId || !publicKey) {
+      console.error('EmailJS configuration missing');
+      setFormStatus('error');
+      toast({
+        variant: "destructive",
+        title: "Configuration Error",
+        description: "Email service is not properly configured. Please contact support.",
+      });
+      return;
+    }
+    
     try {
       await emailjs.send(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        serviceId,
+        templateId,
         {
-          to_email: 'teamfivsys@gmail.com',
+          to_email: import.meta.env.VITE_CONTACT_EMAIL || 'info@fivsys.com',
           from_name: formData.name,
           from_email: formData.email,
           phone: formData.phone,
           subject: formData.subject,
           message: formData.message,
         },
-        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
-      );
-
-      setFormStatus('success');
+        publicKey
+      );      setFormStatus('success');
       setFormData({
         name: '',
         email: '',
@@ -57,12 +80,24 @@ const Contact = () => {
         message: '',
       });
       
+      // Track successful form submission
+      analytics.trackFormSubmission('contact-form', true);
+      analytics.trackEvent({
+        action: 'submit',
+        category: 'contact',
+        label: 'enterprise-consultation-request'
+      });
+      
       toast({
         title: "Message Sent!",
         description: "We'll get back to you as soon as possible.",
-      });
-    } catch (error) {
+      });    } catch (error) {
       setFormStatus('error');
+      
+      // Track failed form submission
+      analytics.trackFormSubmission('contact-form', false);
+      analytics.trackError(error instanceof Error ? error.message : 'Contact form submission failed', '/contact');
+      
       toast({
         variant: "destructive",
         title: "Error",
@@ -202,9 +237,8 @@ const Contact = () => {
                       <Phone className="text-fivsys-red h-8 w-8 animate-gentle-glow" />
                     </div>
                     <div>
-                      <h3 className="font-bold mb-3 text-2xl text-white group-hover:text-fivsys-red transition-colors">Enterprise Hotline</h3>
-                      <p className="text-fivsys-silver text-lg">
-                        <a href="tel:+916361866050" className="hover:text-fivsys-red transition-colors text-2xl font-semibold">
+                      <h3 className="font-bold mb-3 text-2xl text-white group-hover:text-fivsys-red transition-colors">Enterprise Hotline</h3>                      <p className="text-fivsys-silver text-lg">
+                        <a href="tel:+916361866050" onClick={handlePhoneClick} className="hover:text-fivsys-red transition-colors text-2xl font-semibold">
                           +91 6361866050
                         </a>
                         <br />
@@ -221,9 +255,8 @@ const Contact = () => {
                       <Mail className="text-fivsys-red h-8 w-8 animate-gentle-glow" />
                     </div>
                     <div>
-                      <h3 className="font-bold mb-3 text-2xl text-white group-hover:text-fivsys-red transition-colors">Strategic Partnerships</h3>
-                      <p className="text-fivsys-silver text-lg">
-                        <a href="mailto:info@fivsys.com" className="hover:text-fivsys-red transition-colors text-2xl font-semibold">
+                      <h3 className="font-bold mb-3 text-2xl text-white group-hover:text-fivsys-red transition-colors">Strategic Partnerships</h3>                      <p className="text-fivsys-silver text-lg">
+                        <a href="mailto:info@fivsys.com" onClick={handleEmailClick} className="hover:text-fivsys-red transition-colors text-2xl font-semibold">
                           info@fivsys.com
                         </a>
                         <br />

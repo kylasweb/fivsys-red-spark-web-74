@@ -5,8 +5,52 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Check, Users, Lightbulb, Target, Award, ArrowRight } from 'lucide-react';
 import OrigamiBackground from '@/components/OrigamiBackground';
+import { useSEO } from '@/hooks/useSEO';
+import analytics from '@/services/analytics';
+import { useEffect } from 'react';
 
 const About = () => {
+  // SEO Configuration
+  useSEO({
+    title: 'About Fivsys - AI Innovation Leaders | Our Story & Values',
+    description: 'Learn about Fivsys, the leading AI-powered digital solutions company. Discover our story, values, and commitment to innovative technology solutions.',
+    keywords: ['about Fivsys', 'AI company', 'technology innovation', 'digital solutions', 'our story', 'company values', 'AI experts'],
+    ogTitle: 'About Fivsys - AI Innovation Leaders',
+    ogDescription: 'Discover the story behind Fivsys and our mission to transform businesses with AI technology.',
+    canonical: '/about'
+  });
+  // Analytics tracking
+  useEffect(() => {
+    analytics.trackPageView({
+      page_path: '/about',
+      page_title: 'About Us'
+    });
+    
+    // Track engagement with values section
+    const handleScroll = () => {
+      const scrollDepth = Math.round((window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100);
+      if (scrollDepth > 50) {
+        analytics.trackEvent({
+          action: 'deep_engagement',
+          category: 'engagement',
+          label: 'About Page Scroll',
+          value: scrollDepth
+        });
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleCTAClick = (ctaType: string) => {
+    analytics.trackEvent({
+      action: 'cta_click',
+      category: 'conversion',
+      label: ctaType
+    });
+  };
+
   const values = [
     {
       icon: <Lightbulb className="h-10 w-10 text-fivsys-red" />,
@@ -186,9 +230,13 @@ const About = () => {
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Digital Journey?</h2>
             <p className="text-fivsys-silver max-w-2xl mx-auto mb-8">
               Let's collaborate to create innovative solutions that drive growth and success for your business.
-            </p>
-            <Button asChild size="lg" className="bg-fivsys-red hover:bg-fivsys-red/90">
-              <Link to="/contact">Contact Us Today <ArrowRight className="ml-2 h-4 w-4" /></Link>
+            </p>            <Button asChild size="lg" className="bg-fivsys-red hover:bg-fivsys-red/90">
+              <Link 
+                to="/contact"
+                onClick={() => handleCTAClick('About - Contact Us Today')}
+              >
+                Contact Us Today <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
             </Button>
           </div>
         </div>

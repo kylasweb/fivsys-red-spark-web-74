@@ -1,8 +1,33 @@
 
 import ServiceLayout from '@/components/ServiceLayout';
 import { Smartphone } from 'lucide-react';
+import { useSEO } from '@/hooks/useSEO';
+import analytics from '@/services/analytics';
+import { useEffect } from 'react';
 
 const AppDevelopment = () => {
+  // SEO Configuration
+  useSEO({
+    title: 'Mobile App Development Services | iOS & Android Apps | Fivsys',
+    description: 'Professional mobile app development services. Native iOS and Android apps, cross-platform solutions with AI integration. Custom mobile applications that deliver results.',
+    keywords: ['mobile app development', 'iOS app development', 'Android app development', 'cross-platform apps', 'native apps', 'mobile AI integration'],
+    ogTitle: 'Mobile App Development Services | Fivsys',
+    ogDescription: 'Create powerful mobile applications with our expert development team. iOS, Android, and cross-platform solutions.',
+    canonical: '/services/app-development'
+  });
+  // Analytics tracking
+  useEffect(() => {
+    analytics.trackPageView({
+      page_path: '/services/app-development',
+      page_title: 'App Development Service'
+    });
+    analytics.trackEvent({
+      action: 'page_view',
+      category: 'service',
+      label: 'App Development'
+    });
+  }, []);
+
   return (
     <ServiceLayout
       title="App Development"

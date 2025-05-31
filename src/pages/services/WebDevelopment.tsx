@@ -1,8 +1,33 @@
 
 import ServiceLayout from '@/components/ServiceLayout';
 import { Globe } from 'lucide-react';
+import { useSEO } from '@/hooks/useSEO';
+import analytics from '@/services/analytics';
+import { useEffect } from 'react';
 
 const WebDevelopment = () => {
+  // SEO Configuration
+  useSEO({
+    title: 'AI-Powered Web Development Services | Custom Websites | Fivsys',
+    description: 'Professional web development services with AI integration. Custom websites, e-commerce solutions, and progressive web apps designed to convert visitors into customers.',
+    keywords: ['web development', 'AI websites', 'custom websites', 'e-commerce development', 'progressive web apps', 'responsive design', 'SEO optimization'],
+    ogTitle: 'AI-Powered Web Development Services | Fivsys',
+    ogDescription: 'Transform your online presence with AI-powered web development. Custom solutions that drive results.',
+    canonical: '/services/web-development'
+  });
+  // Analytics tracking
+  useEffect(() => {
+    analytics.trackPageView({
+      page_path: '/services/web-development',
+      page_title: 'Web Development Service'
+    });
+    analytics.trackEvent({
+      action: 'page_view',
+      category: 'service',
+      label: 'Web Development'
+    });
+  }, []);
+
   return (
     <ServiceLayout
       title="Web Development"

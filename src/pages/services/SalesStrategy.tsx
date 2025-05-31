@@ -1,8 +1,34 @@
 
 import ServiceLayout from '@/components/ServiceLayout';
 import { TrendingUp } from 'lucide-react';
+import { useSEO } from '@/hooks/useSEO';
+import analytics from '@/services/analytics';
+import { useEffect } from 'react';
 
 const SalesStrategy = () => {
+  // SEO Configuration
+  useSEO({
+    title: 'AI Sales Strategy Services | Intelligent Sales Automation | Fivsys',
+    description: 'Professional sales strategy services with AI integration. Sales automation, lead scoring, CRM optimization, and conversion strategies that drive revenue growth.',
+    keywords: ['sales strategy', 'AI sales automation', 'lead scoring', 'sales optimization', 'CRM integration', 'sales funnel optimization', 'conversion strategy'],
+    ogTitle: 'AI Sales Strategy Services | Fivsys',
+    ogDescription: 'Transform your sales performance with intelligent automation and data-driven strategies. AI-powered sales solutions.',
+    canonical: '/services/sales-strategy'
+  });
+
+  // Analytics tracking
+  useEffect(() => {
+    analytics.trackPageView({
+      page_path: '/services/sales-strategy',
+      page_title: 'Sales Strategy Service'
+    });
+    analytics.trackEvent({
+      action: 'page_view',
+      category: 'service',
+      label: 'Sales Strategy'
+    });
+  }, []);
+
   return (
     <ServiceLayout
       title="Sales Strategy"
